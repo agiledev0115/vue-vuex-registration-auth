@@ -24,33 +24,33 @@ git clone https://github.com/wshamroukh/aspnet-core-3-registration-login-api
   "WebApiDatabase": "Server=tcp:jw-sql-server.database.windows.net,1433;Initial Catalog=my-sql-db-2;Persist Security Info=False;User ID=jason;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 },
 ```
-7. Inside the connection string replace {your_password} with the Azure SQL server admin password you created when setting up the database.
-8. Open the ASP.NET Core app settings file (`/appsettings.json`) in a text editor.
-9. Replace the value of the app settings Secret with your own random string, a quick and easy way is to generate a couple of GUIDs and join them together to make a long random string (e.g. from https://www.guidgenerator.com/), or you could use Powershell command: `New-Guid`
-10. Build the API with the command:
+8. Inside the connection string replace {your_password} with the Azure SQL server admin password you created when setting up the database.
+9. Open the ASP.NET Core app settings file (`/appsettings.json`) in a text editor.
+10. Replace the value of the app settings Secret with your own random string, a quick and easy way is to generate a couple of GUIDs and join them together to make a long random string (e.g. from https://www.guidgenerator.com/), or you could use Powershell command: `New-Guid`
+11. Build the API with the command:
 ```
 dotnet publish --configuration Release
 ```
-11. Copy the files from the `aspnet-core-3-registration-login-api\bin\Release\netcoreapp3.1\publish` to the backend app service using SFTP
-12. Navigate into the cloned directory of the frontend (vue) application and install all required node packages with the command:
+12. Copy the files from the `aspnet-core-3-registration-login-api\bin\Release\netcoreapp3.1\publish` to the backend app service using SFTP
+13. Navigate into the cloned directory of the frontend (vue) application and install all required node packages with the command:
 ```
 npm install
 ```
-13. Open the main React index file (/src/index.jsx) in a text editor.
-14. Delete the following lines from the file to remove the fake backend that the React app uses by default: <br />
+14. Open the main React index file (/src/index.jsx) in a text editor.
+15. Delete the following lines from the file to remove the fake backend that the React app uses by default: <br />
 ```
 // setup fake backend 
 import { configureFakeBackend } from './_helpers';
 configureFakeBackend();
 ```
-15. Open the webpack config file `/webpack.config.js` in a text editor.
-16. Change the `apiUrl` config property to to the URL of your backend Azure Web App for instance:`https://backend.azurewebsites.net`
-17. Build the React app with the command:
+16. Open the webpack config file `/webpack.config.js` in a text editor.
+17. Change the `apiUrl` config property to to the URL of your backend Azure Web App for instance:`https://backend.azurewebsites.net`
+18. Build the React app with the command:
 ```
 npm run build
 ```
-18. Copy the files from the `react-redux-registration-login-example\dist` directory to the frontend Azure Web App Service using SFTP.
-19. Create a file named `web.config` and copy it to the frontend Azure Web App Service using SFTP.
+19. Copy the files from the `react-redux-registration-login-example\dist` directory to the frontend Azure Web App Service using SFTP.
+20. Create a file named `web.config` and copy it to the frontend Azure Web App Service using SFTP.
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -71,6 +71,4 @@ npm run build
     </system.webServer>
 </configuration>
 ```
-20. Test now by accessing the frontend Azure Web App Service URL.
-
-
+21. Test now by accessing the frontend Azure Web App Service URL.
